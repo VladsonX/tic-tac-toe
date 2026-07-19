@@ -18,6 +18,10 @@
   list-style: none;
 }
 
+.li {
+  list-style: none;
+}
+
 .button {
   width: 8rem;
   height: 8rem;

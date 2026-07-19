@@ -5,9 +5,20 @@ import styles from './App.module.css';
 
 function App() {
   const [activePlayer, setActivePlayer] = useState('X');
+  const [gameTurns, setGameTurns] = useState([]);
 
-  function handleSelectSquare() {
+  function handleSelectSquare(rowIndex, colIndex) {
     setActivePlayer(prevValue => (prevValue === 'X' ? 'O' : 'X'));
+    setGameTurns(prevTurns => {
+      let currPlayer = 'X';
+      if (prevTurns.length > 0 && prevTurns[0].player === 'X') currPlayer = 'O';
+
+      const updatedTurns = [
+        { square: { row: rowIndex, col: colIndex }, player: currPlayer },
+        ...prevTurns,
+      ];
+      return updatedTurns;
+    });
   }
   return (
     <main>
@@ -25,9 +36,9 @@ function App() {
           ></Player>
         </ol>
         <GameBoard
-          onChangePlayer={handleSelectSquare}
-          activePlayer={activePlayer}
-          className={styles.ol}
+          gameTurns={gameTurns}
+          onSelectSquare={handleSelectSquare}
+          styles={styles.ol}
         />
       </div>
     </main>
