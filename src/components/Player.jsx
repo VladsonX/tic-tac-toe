@@ -1,12 +1,22 @@
 import { useState } from 'react';
 import styles from './Player.module.css';
 
-export default function Player({ name, symbol, onClick, isActive }) {
+export default function Player({
+  name,
+  symbol,
+  onChangeName,
+  onClick,
+  isActive,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(name);
 
   function editNameHandler() {
     setIsEditing(prev => !prev);
+
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
 
   function changeNameHandler(e) {
