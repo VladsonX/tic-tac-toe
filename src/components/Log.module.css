@@ -13,7 +13,7 @@
   margin: 0.75rem;
 }
 
-.log li.highlighted {
+.highlighted {
   background-color: #3f3b00;
   color: white;
 }

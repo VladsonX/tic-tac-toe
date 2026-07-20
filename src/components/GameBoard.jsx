@@ -25,6 +25,7 @@ export default function GameBoard({ onSelectSquare, gameTurns, ...props }) {
                 <button
                   className={styles.button}
                   onClick={() => onSelectSquare(rowIndex, colIndex)}
+                  disabled={playerSymbol}
                 >
                   {playerSymbol}
                 </button>
