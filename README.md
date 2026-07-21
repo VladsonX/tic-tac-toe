@@ -74,7 +74,7 @@ The application is structured around a centralized state management pattern, ens
    ```
 4. Start the development server:
    ```bash
-   npm start
+   npm run dev
    ```
 
 ## Usage
