@@ -1,6 +1,21 @@
 # Tic Tac Toe React Project
 
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]()
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)]()
+[![CSS Modules](https://img.shields.io/badge/CSS_Modules-000000?style=for-the-badge&logo=cssmodules&logoColor=white)]()
+[![State Management](https://img.shields.io/badge/State_Management-Derived_&_Immutable-blue?style=for-the-badge)]()
+[![Architecture](https://img.shields.io/badge/Architecture-Component_Composition-brightgreen?style=for-the-badge)]()
+
 A polished Tic Tac Toe game built as part of the React Essential Deep Dive course from Maximilian Schwarzmüller Full React Course. This project demonstrates the core concepts of React development, including component architecture, state management, user interactions, and application styling.
+
+![Demo - Player wins](./demo/vlad-wins.gif)
+
+## Live Preview
+
+[View the live application here](https://vlad-tictactoe.netlify.app)
+
+![Demo - Draw](./demo/draw.gif)
 
 ## Project Overview
 
