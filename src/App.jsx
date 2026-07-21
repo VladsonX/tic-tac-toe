@@ -6,7 +6,9 @@ import Log from './components/Log';
 import { WINNING_COMBINATIONS } from './winning-combinations';
 import GameOver from './components/GameOver';
 
-const initialGameBoard = [
+const NUMBER_OF_SQUARES = 9;
+const PLAYERS = { X: 'Player 1', O: 'Player 2' };
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -18,19 +20,9 @@ function deriveActivePlayer(gameTurns) {
   return activePlayer;
 }
 
-function App() {
-  const [gameTurns, setGameTurns] = useState([]);
-  const [players, setPlayers] = useState({ X: 'Player 1', O: 'Player 2' });
-
-  const activePlayer = deriveActivePlayer(gameTurns);
+function deriveWinner(gameBoard, players) {
   let winner;
-  const gameBoard = [...initialGameBoard.map(row => [...row])];
-
-  gameTurns.map(({ square, player }) => {
-    const { row, col } = square;
-    gameBoard[row][col] = player;
-  });
-
+  let aboba;
   WINNING_COMBINATIONS.forEach(combination => {
     const firstSquareSymbol =
       gameBoard[combination[0].row][combination[0].column];
@@ -47,7 +39,28 @@ function App() {
       winner = players[firstSquareSymbol];
   });
 
-  const hasDraw = gameTurns.length === 9 && !winner;
+  return winner;
+}
+
+function deriveGameBoard(initialGameBoard, gameTurns) {
+  const gameBoard = [...initialGameBoard.map(row => [...row])];
+
+  gameTurns.map(({ square, player }) => {
+    const { row, col } = square;
+    gameBoard[row][col] = player;
+  });
+
+  return gameBoard;
+}
+
+function App() {
+  const [gameTurns, setGameTurns] = useState([]);
+  const [players, setPlayers] = useState(PLAYERS);
+
+  const activePlayer = deriveActivePlayer(gameTurns);
+  const gameBoard = deriveGameBoard(INITIAL_GAME_BOARD, gameTurns);
+  const winner = deriveWinner(gameBoard, players);
+  const hasDraw = gameTurns.length === NUMBER_OF_SQUARES && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns(prevTurns => {
@@ -78,13 +91,13 @@ function App() {
           <Player
             isActive={activePlayer === 'X'}
             symbol="X"
-            name="Player 1"
+            name={PLAYERS.X}
             onChangeName={handleChangePlayerName}
           ></Player>
           <Player
             isActive={activePlayer === 'O'}
             symbol="O"
-            name="Player 2"
+            name={PLAYERS.O}
             onChangeName={handleChangePlayerName}
           ></Player>
         </ol>
